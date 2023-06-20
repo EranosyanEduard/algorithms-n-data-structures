@@ -9,4 +9,4 @@ parserOptions:
   ecmaVersion: latest
   project: tsconfig.json
   sourceType: module
-rules: {}
+rules: { '@typescript-eslint/no-non-null-assertion': warn }
