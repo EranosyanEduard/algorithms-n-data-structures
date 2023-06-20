@@ -22,4 +22,14 @@ describe('Тест функции "int"', () => {
       '0.5'
     )
   })
+  it('Тест метода "string"', () => {
+    const stringifyNegativeX = int(-123).to.string()
+    const stringifyPositiveX = int(123).to.string()
+
+    assert.isString(stringifyNegativeX, 'isString')
+    assert.equal(stringifyNegativeX, '-123', 'equal')
+
+    assert.isString(stringifyPositiveX, 'isString')
+    assert.equal(stringifyPositiveX, '123', 'equal')
+  })
 })

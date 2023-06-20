@@ -1,3 +1,5 @@
+import { type Int } from '../int'
+
 declare const uniqueSymbol: unique symbol
 
 /**
@@ -9,12 +11,15 @@ class Char implements IMyType<string> {
 
   /**
    * Сконструировать экземпляр класса **Char**.
-   * @param v символ
+   * @param v символ или код символа
    */
-  static new(v: string): Char | never {
-    if (v.length === 1) {
-      return new Char(v)
+  static new(v: string | Int): Char | never {
+    const V = typeof v === 'object' ? String.fromCharCode(v.value) : v
+
+    if (V.length === 1) {
+      return new Char(V)
     }
+
     throw new Error(`Значение аргумента v не соответствует типу Char`)
   }
 

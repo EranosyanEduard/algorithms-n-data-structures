@@ -1,3 +1,7 @@
+import { char } from '../char'
+import { div } from '../div'
+import { mod } from '../mod'
+
 declare const uniqueSymbol: unique symbol
 
 /**
@@ -18,7 +22,29 @@ class Int implements IMyType<number> {
     throw new Error(`Значение аргумента v не соответствует типу Int`)
   }
 
+  readonly to = { string: this.string.bind(this) }
+
   private constructor(readonly value: number) {}
+
+  /**
+   * Возвращает строковое представление целого числа.
+   */
+  private string(): string {
+    const { value } = this
+    const DIVIDER = Int.new(10)
+    const MIN_CHAR_CODE = char('0').code
+    const SIGN = Math.sign(value) < 0 ? '-' : ''
+    let int = Int.new(Math.abs(value))
+    let stringifyValue = ''
+
+    while (int.value !== 0) {
+      const character = char(Int.new(mod(int, DIVIDER).value + MIN_CHAR_CODE))
+      stringifyValue = `${character.value}${stringifyValue}`
+      int = div(int, DIVIDER)
+    }
+
+    return `${SIGN}${stringifyValue}`
+  }
 }
 
 /**
