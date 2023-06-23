@@ -22,9 +22,19 @@ class Int implements IMyType<number> {
     throw new Error(`Значение аргумента v не соответствует типу Int`)
   }
 
-  readonly to = { string: this.string.bind(this) }
+  readonly to = {
+    boolean: this.boolean.bind(this),
+    string: this.string.bind(this)
+  }
 
   private constructor(readonly value: number) {}
+
+  /**
+   * Возвращает логическое представление целого числа.
+   */
+  private boolean(): boolean {
+    return this.value !== 0
+  }
 
   /**
    * Возвращает строковое представление целого числа.

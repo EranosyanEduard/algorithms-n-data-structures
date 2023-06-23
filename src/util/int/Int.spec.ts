@@ -22,6 +22,12 @@ describe('Тест функции "int"', () => {
       '0.5'
     )
   })
+  it('Тест метода "boolean"', () => {
+    assert.isTrue(int(1).to.boolean(), '1')
+    assert.isTrue(int(-1).to.boolean(), '-1')
+    assert.isFalse(int(0).to.boolean(), '0')
+    assert.isFalse(int(-0).to.boolean(), '-0')
+  })
   it('Тест метода "string"', () => {
     const stringifyNegativeX = int(-123).to.string()
     const stringifyPositiveX = int(123).to.string()
