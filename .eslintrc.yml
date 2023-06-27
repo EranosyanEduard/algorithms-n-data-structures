@@ -9,4 +9,8 @@ parserOptions:
   ecmaVersion: latest
   project: tsconfig.json
   sourceType: module
-rules: { '@typescript-eslint/no-non-null-assertion': warn }
+plugins:
+  - my-rules
+rules:
+  my-rules/import-alphabetic-order: error
+  '@typescript-eslint/no-non-null-assertion': warn
