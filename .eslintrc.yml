@@ -14,3 +14,9 @@ plugins:
 rules:
   my-rules/import-alphabetic-order: error
   '@typescript-eslint/no-non-null-assertion': warn
+overrides:
+  - files: ['src/**/*.spec.ts']
+    extends:
+      - plugin:mocha/recommended
+    plugins:
+      - mocha

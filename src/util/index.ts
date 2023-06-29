@@ -1,2 +1,5 @@
 export * as MyChar from './char'
+export * from './lazy'
 export * as MyMath from './my-math'
+export * from './singleton'
+export * from './void'
